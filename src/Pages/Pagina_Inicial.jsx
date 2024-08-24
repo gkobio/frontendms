@@ -1,43 +1,55 @@
-// src/components/RestaurantList.js
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Pagina_Inicial.css';
 
-
-// Exemplo de dados dos restaurantes
-const restaurants = [
-  {
-    id: 1,
-    name: 'Restaurante A',
-    address: 'Rua Exemplo, 123',
-    phone: '(11) 1234-5678',
-    hours: 'Seg-Sex: 10:00 - 22:00, Sab-Dom: 11:00 - 23:00'
-  },
-  {
-    id: 2,
-    name: 'Restaurante B',
-    address: 'Avenida Teste, 456',
-    phone: '(11) 2345-6789',
-    hours: 'Seg-Sex: 11:00 - 21:00, Sab-Dom: 12:00 - 22:00'
-  },
-  // Adicione mais restaurantes conforme necessário
-];
-
 const RestaurantList = () => {
-  return (
-    <div>
-      <h1>Lista de Restaurantes</h1>
-      <ul>
-        {restaurants.map((restaurant) => (
-          <li key={restaurant.id} style={{ marginBottom: '20px' }}>
-            <h2>{restaurant.name}</h2>
-            <p><strong>Endereço:</strong> {restaurant.address}</p>
-            <p><strong>Telefone:</strong> {restaurant.phone}</p>
-            <p><strong>Horário:</strong> {restaurant.hours}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+    const [searchTerm, setSearchTerm] = useState('');
+    const navigate = useNavigate(); // Hook para navegação
+
+    const restaurants = [
+        { id: 1, name: 'Pizzeria Napoli', address: '123 Main St', hours: '10:00 AM - 10:00 PM' },
+        { id: 2, name: 'Sushi World', address: '456 Oak St', hours: '11:00 AM - 11:00 PM' },
+        { id: 3, name: 'Burger Palace', address: '789 Pine St', hours: '09:00 AM - 09:00 PM' },
+        // Adicione mais restaurantes aqui
+    ];
+
+    const filteredRestaurants = restaurants.filter(restaurant =>
+        restaurant.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        restaurant.address.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    const handleClick = (restaurantId) => {
+        // Redireciona para a página de login
+        navigate('/login');
+    };
+
+    return (
+        <div className="restaurant-list-container">
+            <input
+                type="text"
+                placeholder="Pesquisar restaurantes..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="search-bar"
+            />
+            <div className="restaurants">
+                {filteredRestaurants.length > 0 ? (
+                    filteredRestaurants.map(restaurant => (
+                        <div key={restaurant.id} className="restaurant-card">
+                            <h2>{restaurant.name}</h2>
+                            <p>{restaurant.address}</p>
+                            <p>{restaurant.hours}</p>
+                            <button onClick={() => handleClick(restaurant.id)}>
+                                Ver detalhes
+                            </button>
+                        </div>
+                    ))
+                ) : (
+                    <p className="no-results">Nenhum restaurante encontrado.</p>
+                )}
+            </div>
+        </div>
+    );
 };
 
 export default RestaurantList;

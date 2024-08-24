@@ -1,0 +1,82 @@
+/* Container principal da tela de login */
+.login-container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f8f8;
+}
+
+/* Estilo para o formulário de login */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  width: 50%;
+  max-width: 400px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo do título do formulário */
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Contêiner para as opções de cliente e restaurante */
+.checkbox-container {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+/* Estilo dos inputs de rádio */
+.checkbox-container input {
+  margin-right: 10px;
+}
+
+/* Estilo dos inputs de texto e senha */
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Estilo do botão de login */
+.login-button {
+  padding: 12px;
+  font-size: 16px;
+  color: white;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Estilo do botão de login ao passar o mouse sobre ele */
+.login-button:hover {
+  background-color: #45a049;
+}
+
+/* Estilo da imagem ao lado do formulário */
+.login-image {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilo da imagem */
+.login-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
