@@ -1,15 +1,23 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Pagina_Inicial from './Pages/Pagina_Inicial';
+import './App.css';
+import AppRouter from './AppRouter';
+import { useNavigate } from 'react-router-dom';
 
 
 function App() {
+
   return (
-    <div className="App">
-      <Pagina_Inicial />
-    </div>
+    <>
+      <header>
+        <h1>PedeAi</h1>
+      </header>
+      <AppRouter/>
+      <footer>
+        <nav>
+          <a onClick={() => useNavigate("/cardapio")}>Cardapio</a>
+        </nav>
+      </footer>
+    </>
   );
 }
 

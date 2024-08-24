@@ -1,0 +1,81 @@
+/* Container principal da lista de restaurantes */
+.restaurant-list-container {
+    max-width: 1200px; /* Define a largura máxima do container */
+    margin: 0 auto; /* Centraliza o container horizontalmente */
+    padding: 20px; /* Adiciona espaçamento interno ao container */
+    background-color: #f4f4f4; /* Define a cor de fundo do container */
+    border-radius: 8px; /* Arredonda os cantos do container */
+}
+
+/* Estilo para a barra de pesquisa */
+.search-bar {
+    width: 100%; /* Faz com que a barra de pesquisa ocupe toda a largura disponível */
+    padding: 12px; /* Adiciona espaçamento interno ao redor do texto */
+    font-size: 16px; /* Define o tamanho da fonte */
+    border: 1px solid #ccc; /* Adiciona uma borda sutil */
+    border-radius: 4px; /* Arredonda os cantos da barra de pesquisa */
+    margin-bottom: 20px; /* Adiciona espaço abaixo da barra de pesquisa */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil */
+}
+
+/* Grid de cartões de restaurante */
+.restaurants {
+    display: grid; /* Utiliza o layout de grid */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Cria colunas responsivas */
+    gap: 20px; /* Define o espaço entre os cartões */
+}
+
+/* Estilo para cada cartão de restaurante */
+.restaurant-card {
+    padding: 20px; /* Adiciona espaçamento interno ao cartão */
+    background-color: #fff; /* Define a cor de fundo do cartão */
+    border: 1px solid #ddd; /* Adiciona uma borda sutil ao cartão */
+    border-radius: 8px; /* Arredonda os cantos do cartão */
+    text-align: center; /* Centraliza o texto dentro do cartão */
+    transition: transform 0.3s, box-shadow 0.3s; /* Adiciona transição suave para o efeito de hover */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil ao cartão */
+}
+
+/* Estilo do cartão de restaurante ao passar o mouse sobre ele */
+.restaurant-card:hover {
+    transform: scale(1.05); /* Aumenta o tamanho do cartão */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Aumenta a sombra */
+}
+
+/* Estilo do título dentro do cartão */
+.restaurant-card h2 {
+    margin: 0; /* Remove a margem padrão */
+    font-size: 22px; /* Define o tamanho da fonte */
+    color: #333; /* Define a cor do texto */
+}
+
+/* Estilo dos parágrafos dentro do cartão */
+.restaurant-card p {
+    margin: 10px 0; /* Adiciona espaçamento vertical */
+    font-size: 14px; /* Define o tamanho da fonte */
+    color: #666; /* Define a cor do texto */
+}
+
+/* Estilo do botão dentro do cartão */
+.restaurant-card button {
+    padding: 12px 24px; /* Adiciona espaçamento interno ao botão */
+    font-size: 14px; /* Define o tamanho da fonte */
+    color: #fff; /* Define a cor do texto */
+    background-color: #007bff; /* Define a cor de fundo do botão */
+    border: none; /* Remove a borda do botão */
+    border-radius: 4px; /* Arredonda os cantos do botão */
+    cursor: pointer; /* Altera o cursor para uma mãozinha */
+    transition: background-color 0.3s; /* Adiciona transição suave para a cor de fundo */
+}
+
+/* Estilo do botão ao passar o mouse sobre ele */
+.restaurant-card button:hover {
+    background-color: #0056b3; /* Muda a cor de fundo */
+}
+
+/* Estilo para a mensagem de nenhum resultado encontrado */
+.no-results {
+    text-align: center; /* Centraliza o texto */
+    font-size: 18px; /* Define o tamanho da fonte */
+    color: #888; /* Define a cor do texto */
+}
