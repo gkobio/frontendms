@@ -2,14 +2,19 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Pagina_Inicial from './Pages/Pagina_Inicial';
+import DetalhesPedido from './Pages/Private/Restaurante/DetalhesPedido';
+import HearderRestaurante from './headerRestaurante'
 
 
 function App() {
   return (
+    <>
+    
+    <HearderRestaurante />
     <div className="App">
-      <Pagina_Inicial />
+      <DetalhesPedido />
     </div>
+    </>
   );
 }
 
