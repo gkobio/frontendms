@@ -1,0 +1,46 @@
+/* Garante que o contêiner ocupe toda a altura da tela e centralize o conteúdo */
+.container {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100vh; /* Ocupa toda a altura da tela */
+    margin: 0;
+}
+
+/* Estilos da caixa de pedido */
+.retangulo {
+    width: 400px;
+    height: 300px;
+    background-color: #c98888;
+    border-radius: 20px;
+    color: #2e3b27;
+    text-align: center;
+    padding: 20px; /* Adicione espaço interno para separar o conteúdo das bordas */
+}
+
+/* Estilo dos itens dentro da caixa */
+.item {
+    margin-bottom: 10px; /* Adicione espaço entre os itens */
+}
+
+/* Aumente o tamanho da fonte para tornar o texto mais legível */
+.retangulo h2 {
+    font-size: 24px;
+}
+
+/* Estilize a lista de pizzas */
+.retangulo ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Estilize os itens da lista */
+.retangulo li {
+    margin: 5px 0; /* Adicione espaço entre os itens da lista */
+    font-size: 16px;
+}
+
+/* Adicione estilo para o rótulo */
+.retangulo label {
+    font-weight: bold;
+}
