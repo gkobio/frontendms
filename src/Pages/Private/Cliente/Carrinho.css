@@ -1,29 +1,85 @@
+/* Container centralizado */
 .cart-container {
-    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
 }
 
+.cart-content {
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos dos itens do carrinho */
 .cart-items {
     margin-bottom: 20px;
 }
 
 .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border: 1px solid #ddd;
     padding: 10px;
     margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.item-details {
+    display: flex;
+    flex-direction: column;
 }
 
 .quantity-controls {
     display: flex;
     align-items: center;
+    margin-top: 5px;
 }
 
 .quantity-controls button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
     margin: 0 5px;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
+.quantity-controls button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo do botão de excluir */
+.remove-item {
+    background-color: red; /* Cor de fundo vermelha */
+    color: black; /* Cor do texto preta */
+    border: none; /* Remove a borda */
+    font-size: 20px; /* Tamanho da fonte */
+    width: 30px; /* Largura do botão */
+    height: 30px; /* Altura do botão */
+    display: flex; /* Usa flexbox para centralizar o conteúdo */
+    align-items: center; /* Alinha verticalmente o conteúdo */
+    justify-content: center; /* Alinha horizontalmente o conteúdo */
+    border-radius: 50%; /* Faz o botão redondo */
+    cursor: pointer; /* Muda o cursor para uma mãozinha */
+    transition: background-color 0.3s; /* Transição suave para a cor de fundo */
+}
+
+.remove-item:hover {
+    background-color: #cc0000; /* Cor de fundo vermelha mais escura ao passar o mouse */
+}
+
+/* Estilo do resumo do carrinho */
 .cart-summary {
     border-top: 2px solid #ddd;
-    padding-top: 10px;
+    padding-top: 20px;
 }
 
 .payment-method label,
@@ -34,13 +90,18 @@
 }
 
 .checkout-button {
-    background-color: #4CAF50;
+    background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 4px;
     cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s;
 }
 
 .checkout-button:hover {
-    background-color: #45a049;
+    background-color: #0056b3;
 }

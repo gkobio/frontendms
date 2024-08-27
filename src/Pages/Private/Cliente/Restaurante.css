@@ -1,18 +1,38 @@
 .restaurant-detail-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Centraliza verticalmente */
     padding: 20px;
+}
+
+.restaurant-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
 }
 
 .product-list {
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .product-item {
     border: 1px solid #ddd;
     padding: 10px;
     margin-bottom: 10px;
+    width: 100%;
+    max-width: 400px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .add-button {
@@ -21,6 +41,8 @@
     border: none;
     padding: 10px;
     cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
 }
 
 .add-button:hover {
@@ -45,6 +67,7 @@
     border-radius: 5px;
     position: relative;
     width: 300px;
+    text-align: center;
 }
 
 .close-btn {
