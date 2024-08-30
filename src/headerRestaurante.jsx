@@ -8,12 +8,15 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Avatar from '@mui/material/Avatar';
+import Chip from '@mui/material/Chip';
 import Tooltip from '@mui/material/Tooltip';
+import { useAuth } from './Context/AuthContext';
 
 const settings = ['Ver Conta', 'Logout'];
 
 function DesktopAppBar() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const { logout } = useAuth();
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -21,6 +24,13 @@ function DesktopAppBar() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleMenuClick = (setting) => {
+    if (setting === 'Logout') {
+      logout(); // Chama a função de logout
+    }
+    handleCloseUserMenu();
   };
 
   return (
@@ -32,7 +42,6 @@ function DesktopAppBar() {
           component="div"
           sx={{
             mr: 2,
-            fontFamily: 'monospace',
             fontWeight: 700,
             letterSpacing: '.3rem',
             color: 'inherit',
@@ -60,7 +69,7 @@ function DesktopAppBar() {
         <Box sx={{ flexGrow: 0 }}>
           <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar alt="User Initials">UI</Avatar>
+              <Chip color="secondary" avatar={<Avatar>M</Avatar>} label="Nome Restaurante" size="medium" />
             </IconButton>
           </Tooltip>
           <Menu
@@ -80,7 +89,7 @@ function DesktopAppBar() {
             onClose={handleCloseUserMenu}
           >
             {settings.map((setting) => (
-              <MenuItem key={setting} onClick={handleCloseUserMenu}>
+              <MenuItem key={setting} onClick={() => handleMenuClick(setting)}>
                 <Typography textAlign="center">{setting}</Typography>
               </MenuItem>
             ))}
