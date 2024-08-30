@@ -24,7 +24,7 @@ const RestaurantList = () => {
     );
 
     const handleClick = (restaurantId) => {
-        navigate('/login');
+        navigate('/restaurante');
     };
 
     return (

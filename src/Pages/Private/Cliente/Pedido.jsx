@@ -1,5 +1,6 @@
-import "./Pedido.css";
-import { useState, useEffect } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './Pedido.css'; // Importar o CSS com a classe personalizada
+import { useState, useEffect } from 'react';
 
 const TelaStatusPedido = () => {
     // Estado inicial do status do pedido e valor do contador
@@ -23,41 +24,41 @@ const TelaStatusPedido = () => {
     }, [contadorStatus, listaStatus]);
 
     return (
-        <>
-            <div className="container">
-                <div className="retangulo">
-                    <h2>Status do Pedido</h2>
-                    <div className="item">
-                        <label>Valor Total do Pedido:</label>
-                        <span>R$ 0.00</span> {/* Substitua pelo valor real se necessário */}
-                    </div>
-                    <div className="item">
-                        <label>Quantidade de Itens no Carrinho:</label>
-                        0 {/* Substitua pela quantidade real se necessário */}
-                    </div>
-                    <div className="item">
-                        <label>Forma de Pagamento Realizada:</label>
-                        Pagamento Realizado {/* Substitua pela forma de pagamento real */}
-                    </div>
-                    <div className="item">
-                        <label>Endereço de Entrega:</label>
-                        Endereço Exemplo {/* Substitua pelo endereço real */}
-                    </div>
-                    <div className="item">
-                        <label>Pizzas Compradas:</label>
-                        <ul>
-                            <li>Pizza Exemplo</li> {/* Substitua pelas pizzas reais */}
-                        </ul>
-                    </div>
-                    <div>
-                        <label>Status Pedido:</label> {statusPedido}
-                    </div>
-                    <div>
-                        <label>Telefone de contato:</label> 123456789 {/* Substitua pelo número real */}
-                    </div>
+        <div className="gradient-background d-flex justify-content-center align-items-center">
+            <div className="card p-4 shadow-sm" style={{ width: '100%',maxWidth: '800px', background: 'linear-gradient(to left, #ff9aa2, #ffb3b3)' }}>
+                <h2 className="card-title mb-4">Status do Pedido</h2>
+                <div className="mb-3">
+                    <label className="form-label">Valor Total do Pedido:</label>
+                    <div className="form-control">R$ 0.00</div> {/* Substitua pelo valor real se necessário */}
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Quantidade de Itens no Carrinho:</label>
+                    <div className="form-control">0</div> {/* Substitua pela quantidade real se necessário */}
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Forma de Pagamento Realizada:</label>
+                    <div className="form-control">Pagamento Realizado</div> {/* Substitua pela forma de pagamento real */}
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Endereço de Entrega:</label>
+                    <div className="form-control">Endereço Exemplo</div> {/* Substitua pelo endereço real */}
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Pizzas Compradas:</label>
+                    <ul className="list-group">
+                        <li className="list-group-item">Pizza Exemplo</li> {/* Substitua pelas pizzas reais */}
+                    </ul>
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Status Pedido:</label>
+                    <div className="form-control">{statusPedido}</div>
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Telefone de contato:</label>
+                    <div className="form-control">123456789</div> {/* Substitua pelo número real */}
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

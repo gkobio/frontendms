@@ -1,20 +1,58 @@
-import { useState } from 'react'
+import React from 'react';
 import './App.css';
 import AppRouter from './AppRouter';
 import { useNavigate } from 'react-router-dom';
-
+import { useSelector } from 'react-redux';
 
 function App() {
+  const navigate = useNavigate();
+  const pedido = useSelector(state => state.pedido);
+  const carrinho = useSelector(state => state.carrinho);
+
+  const handleClickPedido = () => {
+    if (pedido.numeroPedido === 0) {
+      alert("É preciso terminar de fazer o pedido para ver o pedido");
+      return;
+    }
+    navigate("/pedido");
+  };
+
+  const handleClickCarrinho = () => {
+    if (carrinho.quantidade === 0) {
+      alert("É preciso preencher o carrinho para acessar.");
+      return;
+    }
+    navigate("/carrinho");
+  };
 
   return (
     <>
       <header>
-        <h1>PedeAi</h1>
+        <h1>Brasa e Queijo Pizzaria</h1>
       </header>
+      
+      {/* Navbar */}
+      <nav className="navbar">
+        <ul>
+          <li><a onClick={() => navigate("/")}>Início</a></li>
+          <li><a onClick={() => navigate("/contaCliente")}>Perfil</a></li>
+          <li><a onClick={handleClickCarrinho}>Carrinho</a></li>
+          <li><a onClick={handleClickPedido}>Pedidos</a></li>
+          <li><a onClick={() => navigate("/excluirProduto")}>Excluir Produto</a></li>
+          <li><a onClick={() => navigate("/cadastroProduto")}>Cadastrar Produto</a></li>
+          <li><a onClick={() => navigate("/login")}>Sair</a></li>
+        </ul>
+      </nav>
+
       <AppRouter/>
+
       <footer>
         <nav>
-          <a onClick={() => useNavigate("/cardapio")}>Cardapio</a>
+          <a onClick={() => navigate("/cardapio")}>Cardápio</a>
+          <a onClick={handleClickCarrinho}>Carrinho</a>
+          <a onClick={handleClickPedido}>Pedido</a>
+          <a onClick={() => navigate("/excluirProduto")}>Excluir Produto</a>
+          <a onClick={() => navigate("/cadastroProduto")}>Cadastrar Produto</a>
         </nav>
       </footer>
     </>
