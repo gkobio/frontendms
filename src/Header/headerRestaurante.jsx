@@ -10,13 +10,16 @@ import MenuItem from '@mui/material/MenuItem';
 import Avatar from '@mui/material/Avatar';
 import Chip from '@mui/material/Chip';
 import Tooltip from '@mui/material/Tooltip';
-import { useAuth } from './Context/AuthContext';
+import { Link } from 'react-router-dom'; 
+import { useAuth } from '../Context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const settings = ['Ver Conta', 'Logout'];
 
-function DesktopAppBar() {
+function HearderRestaurante() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const { logout } = useAuth();
+  const navigate = useNavigate();
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -28,10 +31,14 @@ function DesktopAppBar() {
 
   const handleMenuClick = (setting) => {
     if (setting === 'Logout') {
-      logout(); // Chama a função de logout
+      logout();
+    }
+    else if (setting === "Ver Conta"){
+      navigate('/restaurante/conta');
     }
     handleCloseUserMenu();
   };
+  
 
   return (
     <AppBar position="static">
@@ -53,13 +60,15 @@ function DesktopAppBar() {
 
         <Box sx={{ flexGrow: 1, display: 'flex' }}>
           <Button
-            key="meus-itens"
+            component={Link}
+            to="/restaurante/itens" 
             sx={{ my: 2, color: 'white', display: 'block' }}
           >
             Meus Itens
           </Button>
           <Button
-            key="meus-pedidos"
+            component={Link} 
+            to="/restaurante/pedidos" 
             sx={{ my: 2, color: 'white', display: 'block' }}
           >
             Meus Pedidos
@@ -100,4 +109,4 @@ function DesktopAppBar() {
   );
 }
 
-export default DesktopAppBar;
+export default HearderRestaurante;
