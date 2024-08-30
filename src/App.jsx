@@ -3,9 +3,11 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 import { AuthProvider, useAuth } from './Context/AuthContext';
-import Pagina_Inicial from './Pages/Pagina_Inicial';
-import HearderRestaurante from './headerRestaurante';
+import Header from './Header';
+import HearderRestaurante from './Header/headerRestaurante';
 import { Button } from '@mui/material';
+import { BrowserRouter as Router } from 'react-router-dom'; 
+import AppRoutes from './Routes/AppRoutes';
 
 function Content() {
   const { userType, userId, logout, loginAsRestaurant, loginAsCliente } = useAuth();
@@ -24,25 +26,35 @@ function Content() {
 
   return (
     <>
-      {userType === 'restaurante' && <HearderRestaurante />}
-      {userType === 'cliente' && <p>Cliente</p>}
-      {!userType && <p>Nao logado</p>}
+      <div className="header-and-buttons">
+        {userType === 'restaurante' && <HearderRestaurante />}
+        {userType === 'cliente' && <p>Cliente</p>}
+        {!userType && <p>Nao logado</p>}
 
-      <Button onClick={handleLoginRestaurante}>Login restaurante</Button>
-      <Button onClick={handleLoginCliente}>Login cliente</Button>
-
-      <div className="App">
-        <Pagina_Inicial />
+        {/* Botões de login */}
+        
+          <>
+            <Button onClick={handleLoginRestaurante}>Login restaurante</Button>
+            <Button onClick={handleLoginCliente}>Login cliente</Button>
+          </>
+        
       </div>
+      <main className="main-content">
+        {/* Rotas de conteúdo */}
+        <AppRoutes />
+      </main>
     </>
   );
 }
 
 function App() {
   return (
-    <AuthProvider>
-      <Content />
-    </AuthProvider>
+    <Router>
+      <AuthProvider>
+        <Header />
+        <AppRoutes />
+      </AuthProvider>
+    </Router>
   );
 }
 
