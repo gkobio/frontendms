@@ -1,42 +1,24 @@
-/** {
-  margin: 0;
+/* App.css */
+
+.navbar {
+  background-color: #333;
+  padding: 1rem;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
   padding: 0;
-  color: Black;
-  font-style: normal;
+  margin: 0;
+}
+
+.navbar ul li a {
+  color: white;
   text-decoration: none;
-}
-*/
-header {
-  background-color: #724040;
-  width: 100%;
-  height: 40px;
-  color: white;
-  display: flex;
-  justify-content: center;
-}
-
-header h1 {
-  font-size: 24;
-  margin: auto auto;
-  color: white;
-}
-
-footer {
-  background-color: #724040;
-  width: 100%;  
-  height: 40px;
-  position: fixed;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-}
-
-footer nav {
-  margin: auto auto;
-}
-
-footer nav a {
-  margin: 10px;
-  color: white;
   cursor: pointer;
+}
+
+.navbar ul li a:hover {
+  text-decoration: underline;
 }

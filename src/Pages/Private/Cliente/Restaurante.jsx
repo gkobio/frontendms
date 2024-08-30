@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './Restaurante.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './Restaurante.css'; // Para estilizações adicionais personalizadas
 
 const RestaurantDetail = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
@@ -25,32 +26,47 @@ const RestaurantDetail = () => {
     };
 
     return (
-        <div className="restaurant-detail-container">
-            <div className="restaurant-card">
-                <h2>{restaurant.name}</h2>
-                <p>{restaurant.description}</p>
+        <div className="d-flex justify-content-center align-items-center vh-100">
+            <div className="card p-4 shadow-sm" style={{ maxWidth: '600px', width: '100%' }}>
+                <h2 className="card-title">{restaurant.name}</h2>
+                <p className="card-text">{restaurant.description}</p>
                 <p><strong>Endereço:</strong> {restaurant.address}</p>
                 <p><strong>Horário de Funcionamento:</strong> {restaurant.openingHours}</p>
-                <div className="product-list">
+                <div className="mt-4">
                     <h3>Produtos</h3>
-                    {restaurant.products.map(product => (
-                        <div key={product.id} className="product-item">
-                            <h4>{product.name}</h4>
-                            <p>Preço: R${product.price.toFixed(2)}</p>
-                            <button onClick={() => handleProductClick(product)}>Ver Detalhes</button>
-                            <button className="add-button">Adicionar</button>
-                        </div>
-                    ))}
+                    <div className="list-group">
+                        {restaurant.products.map(product => (
+                            <div key={product.id} className="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5 className="mb-1">{product.name}</h5>
+                                    <p className="mb-1">Preço: R${product.price.toFixed(2)}</p>
+                                </div>
+                                <div>
+                                    <button className="btn btn-info btn-sm me-2" onClick={() => handleProductClick(product)}>Ver Detalhes</button>
+                                    <button className="btn btn-primary btn-sm">Adicionar</button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
 
             {selectedProduct && (
-                <div className="popup">
-                    <div className="popup-content">
-                        <span className="close-btn" onClick={handleClosePopup}>&times;</span>
-                        <h3>{selectedProduct.name}</h3>
-                        <p>Preço: R${selectedProduct.price.toFixed(2)}</p>
-                        <p>{selectedProduct.description}</p>
+                <div className="modal fade show d-block" tabIndex="-1" role="dialog" style={{ display: 'block' }}>
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title">{selectedProduct.name}</h5>
+                                <button type="button" className="btn-close" onClick={handleClosePopup}></button>
+                            </div>
+                            <div className="modal-body">
+                                <p>Preço: R${selectedProduct.price.toFixed(2)}</p>
+                                <p>{selectedProduct.description}</p>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" onClick={handleClosePopup}>Fechar</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             )}

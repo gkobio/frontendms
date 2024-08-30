@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './Carrinho.css'; // Não se esqueça de criar um arquivo CSS para estilizar o componente
+import './carrinho.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Cart = () => {
     const [cartItems, setCartItems] = useState([
@@ -36,82 +37,123 @@ const Cart = () => {
     const totalAmount = cartItems.reduce((total, item) => total + item.quantity * item.price, 0);
 
     return (
-        <div className="cart-container">
-            <div className="cart-content">
-                <h2>Carrinho de Compras</h2>
-                {cartItems.length > 0 ? (
-                    <div className="cart-items">
-                        {cartItems.map(item => (
-                            <div key={item.id} className="cart-item">
-                                <div className="item-details">
-                                    <h3>{item.name}</h3>
-                                    <p>Preço: R${item.price.toFixed(2)}</p>
-                                    <div className="quantity-controls">
-                                        <button onClick={() => handleQuantityChange(item.id, -1)}>-</button>
-                                        <span>{item.quantity}</span>
-                                        <button onClick={() => handleQuantityChange(item.id, 1)}>+</button>
+        <div style={{ height: '100vh', background: 'linear-gradient(to left, #ff9aa2, #ffb3b3)' }}>
+        <div className="container mt-12" style={{ maxWidth: '100%' }}>
+            <div className="row justify-content-center">
+                <div className="col-12 col-md-20" style={{ maxWidth: '100%' }}>
+                    <div className="card shadow">
+                        <div className="card-header bg-primary text-white text-center">
+                            <h2>Seu carrinho</h2>
+                        </div>
+                        <div className="card-body">
+                            {cartItems.length > 0 ? (
+                                <div className="list-group">
+                                    {cartItems.map(item => (
+                                        <div key={item.id} className="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h5>{item.name}</h5>
+                                                <p>Preço: R${item.price.toFixed(2)}</p>
+                                                <div className="btn-group" role="group">
+                                                    <button className="btn btn-secondary" onClick={() => handleQuantityChange(item.id, -1)}>-</button>
+                                                    <span className="mx-3">{item.quantity}</span>
+                                                    <button className="btn btn-secondary" onClick={() => handleQuantityChange(item.id, 1)}>+</button>
+                                                </div>
+                                            </div>
+                                            <button className="btn btn-danger" onClick={() => handleRemoveItem(item.id)}>×</button>
+                                        </div>
+                                    ))}
+                                </div>
+                                
+                            ) : (
+                                
+                                <p style={{textAlign:'center',}}><br/>Seu carrinho está vazio.</p>
+                            )}
+                        </div>
+                        <br/>
+                        <div className="card-footer">
+                        <br/>
+
+                            <h3 class="text-center">Total: R${totalAmount.toFixed(2)}</h3>
+                            <br/>
+
+                            <div className="mb-3">
+                                <label className="form-label" ><h5><b>Método de Pagamento:</b> </h5></label>
+                                <div>
+                                    <div className="form-check form-check-inline">
+                                        <input
+                                            className="form-check-input"
+                                            type="radio"
+                                            id="credit"
+                                            value="credit"
+                                            checked={paymentMethod === 'credit'}
+                                            onChange={handlePaymentMethodChange}
+                                        />
+                            
+                                        <label className="form-check-label" htmlFor="credit">
+                                            Cartão de Crédito
+                                        </label>
+                                    </div>
+                                    <div className="form-check form-check-inline">
+                                        <input
+                                            className="form-check-input"
+                                            type="radio"
+                                            id="debit"
+                                            value="debit"
+                                            checked={paymentMethod === 'debit'}
+                                            onChange={handlePaymentMethodChange}
+                                        />
+                                       
+                                        <label className="form-check-label" htmlFor="debit">
+                                            Cartão de Débito
+                                        </label>
+                                    </div>
+                                    <div className="form-check form-check-inline">
+                                        <input
+                                            className="form-check-input"
+                                            type="radio"
+                                            id="cash"
+                                            value="cash"
+                                            checked={paymentMethod === 'cash'}
+                                            onChange={handlePaymentMethodChange}
+                                        />
+                                        <label className="form-check-label" htmlFor="cash">
+                                            Dinheiro
+                                        </label>
                                     </div>
                                 </div>
-                                <button className="remove-item" onClick={() => handleRemoveItem(item.id)}>×</button>
                             </div>
-                        ))}
+                            <div className="mb-3">
+                                <label className="form-label">Endereço:</label>
+                                <input
+                                    className="form-control"
+                                    type="text"
+                                    value={address}
+                                    onChange={handleAddressChange}
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <label className="form-label">Observação:</label>
+                                <textarea
+                                    className="form-control"
+                                    value={note}
+                                    onChange={handleNoteChange}
+                                />
+                            </div>
+                           
+                            <br/>
+                            <div className="d-flex flex-column align-items-center">
+    <button type="button" value="enviar" className="btn btn-success w-40 mb-2" style={{ width: '40%' }}>Finalizar Pedido</button>
+    <button type="button" className="btn btn-danger w-40 mb-2" style={{ width: '40%' }}>Cancelar</button>
+    <button type="button" value="limpar" className="btn btn-secondary w-40" style={{ width: '40%' }}>Limpar carrinho</button>
+</div>
+<br/>
+
+
+                        </div>
                     </div>
-                ) : (
-                    <p>Seu carrinho está vazio.</p>
-                )}
-                <div className="cart-summary">
-                    <h3>Total: R${totalAmount.toFixed(2)}</h3>
-                    <div className="payment-method">
-                        <label>
-                            <input
-                                type="radio"
-                                value="credit"
-                                checked={paymentMethod === 'credit'}
-                                onChange={handlePaymentMethodChange}
-                            />
-                            Cartão de Crédito
-                        </label>
-                        <label>
-                            <input
-                                type="radio"
-                                value="debit"
-                                checked={paymentMethod === 'debit'}
-                                onChange={handlePaymentMethodChange}
-                            />
-                            Cartão de Débito
-                        </label>
-                        <label>
-                            <input
-                                type="radio"
-                                value="cash"
-                                checked={paymentMethod === 'cash'}
-                                onChange={handlePaymentMethodChange}
-                            />
-                            Dinheiro
-                        </label>
-                    </div>
-                    <div className="address">
-                        <label>
-                            Endereço:
-                            <input
-                                type="text"
-                                value={address}
-                                onChange={handleAddressChange}
-                            />
-                        </label>
-                    </div>
-                    <div className="note">
-                        <label>
-                            Observação:
-                            <textarea
-                                value={note}
-                                onChange={handleNoteChange}
-                            />
-                        </label>
-                    </div>
-                    <button className="checkout-button">Finalizar Pedido</button>
                 </div>
             </div>
+        </div>
         </div>
     );
 };
