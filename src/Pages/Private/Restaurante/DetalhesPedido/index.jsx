@@ -3,7 +3,8 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import TabelaItens from './tabelaItens';
 import { Grid, Button } from '@mui/material';
-import ModalAtualizarStatus from './modalAtualizarStatus'; // Importe o novo componente
+import ModalAtualizarStatus from './modalAtualizarStatus'; 
+import { useNavigate } from 'react-router-dom';
 
 // Mapeamento dos status
 const statusMap = {
@@ -74,7 +75,7 @@ export default function DetalhesPedido() {
 
   return (
     <Box sx={{ padding: 2 }}>
-      <Typography variant="h2" component="div" sx={{ marginBottom: 2 }} color="primary">
+      <Typography variant="h5" component="div" sx={{ marginBottom: 2 }} color="primary" align='left'>
         Detalhes do Pedido
       </Typography>
       <Grid 
@@ -85,11 +86,11 @@ export default function DetalhesPedido() {
       >
         <Grid item>
           <Box sx={{ textAlign: 'left', marginBottom: 2 }}>
-            <Typography variant="h6"><b>Status:</b> {statusMap[pedido.status]}</Typography>
-            <Typography variant="h6"><b>Cliente:</b> {cliente.nome}</Typography>
-            <Typography variant="h6"><b>Endereço:</b> {cliente.endereco}</Typography>
-            <Typography variant="h6"><b>Pagamento:</b> {pedido.pagamento}</Typography>
-            <Typography variant="h6"><b>Observação:</b> {pedido.observacao}</Typography>
+            <Typography variant="body1"><b>Status:</b> {statusMap[pedido.status]}</Typography>
+            <Typography variant="body1"><b>Cliente:</b> {cliente.nome}</Typography>
+            <Typography variant="body1"><b>Endereço:</b> {cliente.endereco}</Typography>
+            <Typography variant="body1"><b>Pagamento:</b> {pedido.pagamento}</Typography>
+            <Typography variant="body1"><b>Observação:</b> {pedido.observacao}</Typography>
           </Box>
         </Grid>
         {pedido.status !== 'delivered' && pedido.status !== 'canceled' && pedido.status !== 'denied' && (
@@ -108,7 +109,7 @@ export default function DetalhesPedido() {
         )}
       </Grid>
 
-      <Typography variant="h4" component="div" sx={{ marginBottom: 2 }} color={"primary"}>
+      <Typography variant="h5" component="div" sx={{ marginBottom: 2 }} color={"primary"} align="left">
         Itens
       </Typography>
 

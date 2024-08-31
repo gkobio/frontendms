@@ -3,37 +3,31 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import IconButton from '@mui/material/IconButton';
-import EditIcon from '@mui/icons-material/Edit';
+import Button from '@mui/material/Button';
 
 export default function CardItem({ item, editarItem }) {
   return (
-    <Card variant="outlined" sx={{ mb: 2, width: '800' }}>
-      <CardContent>
-        <Grid 
-          container
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Grid item xs={8} sx={{ textAlign: 'left' }}>
-            <Typography variant="h5" component="div">
+    <Grid item xs={12} sm={6} md={4} lg={3}>
+      <Card variant="outlined" sx={{ mb: 2, width: '100%', aspectRatio: '1/1', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+        <CardContent sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', flexGrow: 1 }}>
+          <div>
+            <Typography variant="h6" component="div">
               {item.nome}
             </Typography>
             <Typography variant="body2">{item.descricao}</Typography>
-          </Grid>
-          <Grid item xs={2}>
+          </div>
+          <div>
             <Typography variant="body2" sx={{ mt: 2 }}>
               R$ {parseFloat(item.preco).toFixed(2)}
             </Typography>
-          </Grid>
-          <Grid item xs={2}>
-            <IconButton aria-label="edit" onClick={editarItem}>
-              <EditIcon />
-            </IconButton>
-          </Grid>
-        </Grid>
-      </CardContent>
-    </Card>
+          </div>
+          <div style={{ textAlign: 'center', marginTop: 'auto' }}>
+            <Button variant="contained" color="primary" onClick={editarItem}>
+              Editar
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    </Grid>
   );
 }

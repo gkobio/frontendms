@@ -13,6 +13,8 @@ const pedidos = [
   { idPedido: 3, idRestaurante: 1, idCliente: 3, descricao: 'Pedido 3', status: 'preparing', observacao: 'Pimenta a parte' },
   { idPedido: 4, idRestaurante: 2, idCliente: 4, descricao: 'Pedido 4', status: 'in_transit', observacao: 'Sem açúcar' },
   { idPedido: 5, idRestaurante: 2, idCliente: 1, descricao: 'Pedido 5', status: 'delivered', observacao: 'Extra molho' },
+  { idPedido: 6, idRestaurante: 2, idCliente: 1, descricao: 'Pedido 6', status: 'canceled', observacao: 'Cancelado pelo cliente' },
+  { idPedido: 7, idRestaurante: 2, idCliente: 1, descricao: 'Pedido 7', status: 'denied', observacao: 'Negado pelo restaurante' },
   // Adicione mais pedidos conforme necessário
 ];
 
@@ -43,26 +45,36 @@ export default function ListarPedidos() {
   };
 
   return (
-    <Box sx={{ width: '100%', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <Box sx={{ padding: 2 }}>
-        <Typography variant="h2" color="primary">
+    <Box sx={{ width: '100%', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <Box sx={{ padding: 2, width: '100%', maxWidth: '1200px', textAlign: 'center' }}>
+        <Typography variant="h5" color="primary">
           Pedidos
         </Typography>
       </Box>
-      <Paper sx={{ width: '100%' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="status dos pedidos">
+      <Paper sx={{ width: '100%', maxWidth: '800px', margin: '0 auto' }}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="status dos pedidos"
+          variant="scrollable"
+          scrollButtons="auto"
+        >
           <Tab label="Todos" value="all" />
           <Tab label="Aguardando Confirmação" value="waiting" />
           <Tab label="Confirmados" value="confirmed" />
           <Tab label="Em Preparo" value="preparing" />
           <Tab label="A Caminho" value="in_transit" />
           <Tab label="Entregues" value="delivered" />
+          <Tab label="Cancelados" value="canceled" />
+          <Tab label="Negados" value="denied" />
         </Tabs>
       </Paper>
-      <Box sx={{ padding: 2, flex: 1 }}>
+      <Box sx={{ padding: 2, flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
         {filteredPedidos.map(pedido => {
           const cliente = findCliente(pedido.idCliente);
-          return <CardPedido key={pedido.idPedido} pedido={pedido} cliente={cliente} />;
+          return (
+            <CardPedido key={pedido.idPedido} pedido={pedido} cliente={cliente} />
+          );
         })}
       </Box>
     </Box>

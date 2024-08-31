@@ -21,7 +21,6 @@ const initialItems = [
   { idItem: 10, idRestaurante: 1, nome: 'Hambúrguer com Queijo Blue', descricao: 'Hambúrguer com queijo blue, cebola caramelizada e molho de pimenta.', preco: '19.00' }
 ];
 
-
 export default function Itens() {
   const [items, setItems] = React.useState(initialItems);
   const [openEdit, setOpenEdit] = React.useState(false);
@@ -38,13 +37,12 @@ export default function Itens() {
     setSelectedItem(null);
   };
 
-  //Mudar aqui para salvar o item
   const handleSaveEdit = (formData) => {
     const updatedItems = items.map(item =>
       item.idItem === formData.idItem ? { ...formData, preco: parseFloat(formData.preco).toFixed(2) } : item
     );
     setItems(updatedItems);
-    handleClose();
+    handleCloseEdit();
   };
 
   const handleOpenAdd = () => {
@@ -67,9 +65,10 @@ export default function Itens() {
         direction="row"
         justifyContent="space-between"
         alignItems="center"
+        margin={'20px'}
       >
         <Grid item>
-          <Typography variant="h2" color={"primary"}>
+          <Typography variant="h5" color={"primary"}>
             Itens do Restaurante
           </Typography>
         </Grid>
@@ -85,12 +84,14 @@ export default function Itens() {
       </Grid>
 
       {/* Lista os itens do restaurante */}
-      {items.map((item) => (
-        <CardItem key={item.idItem} item={item} editarItem={() => handleOpenEdit(item)} />
-      ))}
+      <Grid container spacing={4}>
+        {items.map(item => (
+          <CardItem key={item.idItem} item={item} editarItem={() => handleOpenEdit(item)} />
+        ))}
+      </Grid>
 
       {/* Modal para editar um item */}
-      {open && selectedItem && (
+      {openEdit && selectedItem && (
         <ModalEditarItem
           open={openEdit}
           item={selectedItem}
@@ -102,10 +103,10 @@ export default function Itens() {
       {/* Modal para criar um item novo */}
       {openAdd && 
         <ModalCriarItem
-        open={openAdd}
-        onSave={handleSaveAdd}
-        onClose={handleCloseAdd}
-      />
+          open={openAdd}
+          onSave={handleSaveAdd}
+          onClose={handleCloseAdd}
+        />
       }
     </Box>
   );

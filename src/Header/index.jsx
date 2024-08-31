@@ -1,11 +1,11 @@
 import HeaderRestaurante from './headerRestaurante';
-import { AuthProvider, useAuth } from '../Context/AuthContext';
-import { Button } from '@mui/material';
 import HeaderCliente from './headerCliente';
 import HeaderPadrao from './headerPadrao';
+import { useAuth } from '../Context/AuthContext';
+import { Button } from '@mui/material';
 
 function Header() {
-  const { userType, userId, logout, loginAsRestaurant, loginAsCliente } = useAuth();
+  const { userType, loginAsRestaurant, loginAsCliente } = useAuth();
 
   const handleLoginRestaurante = () => {
     const restaurantId = '12345';
@@ -21,18 +21,15 @@ function Header() {
 
   return (
     <>
-      <div className="header-and-buttons">
-        {userType === 'restaurante' && <HeaderRestaurante />}
-        {userType === 'cliente' && <HeaderCliente />}
-        {!userType && <HeaderPadrao />}
+      {userType === 'restaurante' && <HeaderRestaurante />}
+      {userType === 'cliente' && <HeaderCliente />}
+      {!userType && <HeaderPadrao />}
 
-        {/* Botões de login */}
-        <>
+      {/* Botões de login */}
+      <>
         <Button onClick={handleLoginRestaurante}>Login restaurante</Button>
         <Button onClick={handleLoginCliente}>Login cliente</Button>
-        </>
-    
-      </div>
+      </>
     </>
   );
 }

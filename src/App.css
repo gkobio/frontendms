@@ -11,6 +11,11 @@
   margin: 0 auto;          
 }
 
+.app-content {
+  margin-left: 10%; 
+  margin-right: 10%;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

@@ -73,7 +73,7 @@ export default function RestaurantePerfil() {
 
   return (
     <Box sx={{ padding: 2 }}>
-      <Typography variant="h2" color={"primary"}>
+      <Typography variant="h5" color={"primary"} align='left'>
         Perfil do Restaurante
       </Typography>
       <Box component="form" sx={{ mt: 2 }}>
@@ -176,7 +176,7 @@ export default function RestaurantePerfil() {
         aria-describedby="modal-confirm-description"
       >
         <Box sx={style}>
-          <Typography id="modal-confirm-title" variant="h6" component="h2">
+          <Typography id="modal-confirm-title" variant="h6" >
             Confirmar Exclusão
           </Typography>
           <Typography id="modal-confirm-description" sx={{ mt: 2 }}>
