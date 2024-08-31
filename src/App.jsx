@@ -1,8 +1,10 @@
-import React from 'react';
 import './App.css';
-import AppRouter from './AppRouter';
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { AuthProvider } from './Context/AuthContext';
+import Header from './Header';
+import { BrowserRouter as Router } from 'react-router-dom'; 
+import AppRoutes from './Routes/AppRoutes';
+
+
 
 function App() {
   const navigate = useNavigate();
@@ -26,36 +28,14 @@ function App() {
   };
 
   return (
-    <>
-      <header>
-        <h1>Brasa e Queijo Pizzaria</h1>
-      </header>
-      
-      {/* Navbar */}
-      <nav className="navbar">
-        <ul>
-          <li><a onClick={() => navigate("/")}>Início</a></li>
-          <li><a onClick={() => navigate("/contaCliente")}>Perfil</a></li>
-          <li><a onClick={handleClickCarrinho}>Carrinho</a></li>
-          <li><a onClick={handleClickPedido}>Pedidos</a></li>
-          <li><a onClick={() => navigate("/excluirProduto")}>Excluir Produto</a></li>
-          <li><a onClick={() => navigate("/cadastroProduto")}>Cadastrar Produto</a></li>
-          <li><a onClick={() => navigate("/login")}>Sair</a></li>
-        </ul>
-      </nav>
-
-      <AppRouter/>
-
-      <footer>
-        <nav>
-          <a onClick={() => navigate("/cardapio")}>Cardápio</a>
-          <a onClick={handleClickCarrinho}>Carrinho</a>
-          <a onClick={handleClickPedido}>Pedido</a>
-          <a onClick={() => navigate("/excluirProduto")}>Excluir Produto</a>
-          <a onClick={() => navigate("/cadastroProduto")}>Cadastrar Produto</a>
-        </nav>
-      </footer>
-    </>
+    <Router>
+      <AuthProvider>
+        <Header />
+        <div className="app-content">
+          <AppRoutes />
+        </div>
+      </AuthProvider>
+    </Router>
   );
 }
 
