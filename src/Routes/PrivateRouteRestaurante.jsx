@@ -5,7 +5,7 @@ import { useAuth } from '../Context/AuthContext';
 function PrivateRouteRestaurante() {
   const { userType } = useAuth();
 
-  return userType === 'restaurante' ? <Outlet /> : <Navigate to="/inicial" />;
+  return userType === 'restaurante' ? <Outlet /> : <Navigate to="/" />;
 }
 
 export default PrivateRouteRestaurante;

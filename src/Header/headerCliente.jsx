@@ -59,13 +59,13 @@ function HearderCliente() {
         </Typography>
 
         <Box sx={{ flexGrow: 1, display: 'flex' }}>
-          {/* <Button
+          <Button
             component={Link}
-            to="/restaurantes" 
+            to="/" 
             sx={{ my: 2, color: 'white', display: 'block' }}
           >
             Restaurantes
-          </Button> */}
+          </Button>
           <Button
             component={Link} 
             to="/cliente/pedidos" 

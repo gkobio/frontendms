@@ -19,7 +19,8 @@ export function AuthProvider({ children }) {
   const logout = () => {
     setUserType(null);
     setUserId(null);
-    console.log("LogOut");
+    const navigate = useNavigate();
+    navigate("/");
   };
 
   return (

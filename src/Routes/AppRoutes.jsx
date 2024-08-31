@@ -12,14 +12,17 @@ import ContaRestaurante from '../Pages/Private/Restaurante/Conta';
 
 import CarrinhoCliente from '../Pages/Private/Cliente/Carrinho';
 import PedidoCliente from '../Pages/Private/Cliente/Pedido';
-import ContaCliente from '../Pages/Private/Cliente/Conta';
+import ContaCliente from '../Pages/Private/Cliente/ContaClient';
+import Restaurante from '../Pages/Private/Cliente/Restaurante';
 
 function AppRoutes() {
   return (
       <Routes>
         {/* Rotas Públicas */}
-        <Route path="/inicial" element={<Pagina_Inicial />} />
+        <Route path="/" element={<Pagina_Inicial />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/restaurante" element={<Restaurante />} />
+        <Route path="/cliente/carrinho" element={<CarrinhoCliente />} />
 
         {/* Rotas Privadas para Restaurantes */}
         <Route element={<PrivateRouteRestaurante />}>
@@ -31,7 +34,6 @@ function AppRoutes() {
 
         {/* Rotas Privadas para Clientes */}
         <Route element={<PrivateRouteCliente />}>
-          <Route path="/cliente/carrinho" element={<CarrinhoCliente />} />
           <Route path="/cliente/pedidos" element={<PedidoCliente />} />
           <Route path="/cliente/conta" element={<ContaCliente />} />
         </Route>
